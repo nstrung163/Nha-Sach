@@ -10,9 +10,6 @@ public class LoaiDao {
 	public ArrayList<LoaiBean> getLoaiSach() throws Exception {
 		
 		ArrayList<LoaiBean> ds = new ArrayList<LoaiBean>();
-//		ds.add(new LoaiBean("toan", "Toán"));
-//		ds.add(new LoaiBean("tin", "Tin"));
-//		ds.add(new LoaiBean("ly", "Vật Lý"));
 		//B1: Ket noi vao csdl
 		DungChung dc = new DungChung();
 		dc.KetNoi();

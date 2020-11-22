@@ -12,11 +12,11 @@ html {
 	width: 100%;
 }
 
-.tiep-tuc-mua-hang {
+.tiep-tuc-mua-hang, .thanh-toan {
 	color: #fff;
 }
 
-.tiep-tuc-mua-hang:hover {
+.tiep-tuc-mua-hang:hover, .thanh-toan:hover {
 	color: #fff;
 	text-decoration: none;
 }

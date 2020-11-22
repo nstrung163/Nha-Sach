@@ -12,11 +12,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Giỏ hàng</title>
-<link
-	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,900;1,300;1,400;1,500;1,700&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="asset/plugins/bootstrap/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,900;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="asset/plugins/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="asset/plugins/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="asset/css/trang-chu.css">
 <link rel="stylesheet" href="asset/css/gio-hang.css">
@@ -50,7 +47,7 @@
 						  </li>
 						<li class="nav-item">
 							<jsp:include page="dang-nhap.jsp"></jsp:include>
-							<%if(request.getSession(false).getAttribute("user") == null && request.getSession(false).getAttribute("admin") == null) { %>
+							<%if(request.getSession(false).getAttribute("user") == null) { %>
 								<div class="text-center">
 								  <a href="" type="button" class="nav-link btn" data-toggle="modal" data-target="#elegantModalForm">Đăng nhập</a>
 								</div>
@@ -132,7 +129,13 @@
 					<button class="btn btn-primary" type="button">
 						<a class="tiep-tuc-mua-hang" href="SachController">Tiếp tục mua hàng</a>
 					</button>
-					<button class="btn btn-success" type="button">Thanh toán</button>
+					<%
+						if(!(request.getSession(false).getAttribute("user") == null)) {
+					%>
+						<button class="btn btn-success" type="button"><a class="thanh-toan" href="<%=request.getContextPath()%>/HoaDonController">Thanh toán</a></button>
+					<%} else { %>
+						<button class="btn btn-success" type="button"><a class="thanh-toan" href="<%=request.getContextPath()%>/SachController">Đăng nhập để thanh toán</a></button>
+					<% } %>
 				</div>
 			</div>
 			<%

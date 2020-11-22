@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.DangNhapBean;
-import dao.DangNhapDao;
+import bean.KhachHangBean;
+import dao.KhachHangDao;
 
 /**
  * Servlet implementation class DangNhapController
@@ -40,35 +40,30 @@ public class DangNhapController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String tenDangNhap = request.getParameter("tenDangNhap");
-		String matKhau = request.getParameter("matKhau");
+		String tenDn = request.getParameter("tenDn");
+		String pass = request.getParameter("pass");
 		
-		DangNhapBean dangNhapBean = new DangNhapBean();
-		dangNhapBean.setTenDangNhap(tenDangNhap);
-		dangNhapBean.setMatKhau(matKhau);
+		KhachHangBean khachHangBean = new KhachHangBean();
+		khachHangBean.setTenDn(tenDn);
+		khachHangBean.setPass(pass);
 		
-		DangNhapDao dangNhapDao = new DangNhapDao();
+		KhachHangDao khachHangDao = new KhachHangDao();
 		
 		try {
-			String xacNhanUser = dangNhapDao.xacThucUser(dangNhapBean);
-			if(xacNhanUser.equals("admin")) {
-				System.out.println("Đăng nhập với quyền: Admin");
+			String xacNhanUser = khachHangDao.xacThucUser(khachHangBean);
+			 if(xacNhanUser.equals("user")) {
 				HttpSession session = request.getSession();
-				session.setAttribute("admin", tenDangNhap);
-				request.setAttribute("tenDangNhap", tenDangNhap);
-				response.sendRedirect("SachController");
-			} else if(xacNhanUser.equals("user")) {
-				System.out.println("Đăng nhập với quyền: User");
-				HttpSession session = request.getSession();
-				session.setAttribute("user", tenDangNhap);
 				session.setMaxInactiveInterval(10*60);
-				request.setAttribute("tenDangNhap", tenDangNhap);
+				session.setAttribute("user", tenDn);
+				request.setAttribute("checkDangNhap", tenDn);
+				request.setAttribute("tenDn", tenDn);
 //				request.getRequestDispatcher("thanh-toan.jsp").forward(request, response);
 				response.sendRedirect("SachController");
 			} else {
-				System.out.println("Thôn báo lỗi: " + xacNhanUser);
+				System.out.println("Thông báo lỗi: " + xacNhanUser);
 				request.setAttribute("errMessage", xacNhanUser);
 				request.getRequestDispatcher("dang-nhap.jsp").forward(request, response);
+//				response.sendRedirect("SachController");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -46,11 +46,14 @@
 				        </a>
 				      </li>
 			    	  <li class="nav-item">
-							<%-- <jsp:include page="dang-nhap.jsp"></jsp:include> --%>
-							<jsp:include page="dang-ky.jsp"></jsp:include>
+							
+							
 							<%if(request.getSession(false).getAttribute("user") == null ) { %>
-								<div class="text-center">
-								  <a href="" type="button" class="nav-link btn" data-toggle="modal" data-target="#elegantModalForm">Đăng nhập</a>
+								<jsp:include page="dang-nhap.jsp"></jsp:include>
+								<jsp:include page="dang-ky.jsp"></jsp:include>
+								<div class="text-center group-dang-nhap">
+									<a href="" type="button" class="nav-link btn" data-toggle="modal" data-target="#dangNhapModal">Đăng nhập</a>
+									<a href="" type="button" class="nav-link btn" data-toggle="modal" data-target="#dangKyModal">Đăng ký</a>
 								</div>
 							<%} else { %>
 								<div class="text-center">

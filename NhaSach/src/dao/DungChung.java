@@ -10,6 +10,6 @@ public class DungChung {
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		//B2: Ket noi
 		cn = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-39FGVIL\\SQLEXPRESS:1433;databaseName=QlSach;user=sa; password=123");
-		System.out.println("Da ket noi");
+		System.out.println("Đã kết nối");
 	}
 }

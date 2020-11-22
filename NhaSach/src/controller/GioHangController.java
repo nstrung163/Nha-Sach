@@ -43,7 +43,6 @@ public class GioHangController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		// Sửa giỏ hàng
 		String action = request.getParameter("action") != null ? request.getParameter("action"): "none";
 		switch (action) {
 		case "suaGioHang":
@@ -111,7 +110,8 @@ public class GioHangController extends HttpServlet {
 		String tacGia 	= request.getParameter("tg");
 		String gia 		= request.getParameter("gia");
 		String soLuongSua	= request.getParameter("soLuongCapNhat");
-		gioHangBo.suaGioHang(maLoai, maSach, tenSach, anh, tacGia, Double.parseDouble(gia), Integer.parseInt(soLuongSua));
+		int slSua		= (!soLuongSua.isEmpty() ? Integer.parseInt(soLuongSua) : 1);
+		gioHangBo.suaGioHang(maLoai, maSach, tenSach, anh, tacGia, Double.parseDouble(gia), slSua);
 		session.setAttribute("ssGioHang", gioHangBo);
 		response.sendRedirect("GioHangController");
 //		RequestDispatcher rd = request.getRequestDispatcher("gio-hang.jsp");
