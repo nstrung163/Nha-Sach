@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GeoQuiz</string>
+    <string name="questionA">Châu Á Thái Bình Dương lớn hơn đại Tây Dương</string>
+    <string name="questionC">Xuân Anh là idol giới trẻ phải không</string>
+    <string name="questionB">Thái Dương là chủ tịch D Group phải không</string>
+    <string name="questionD">Anh Bảo là đô trưởng phải không</string>
+    <string name="questionE">Anh Bảo là thầy giáo phải không</string>
+    <string name="questionF">Xuân Anh đẹp trai không</string>
+    <string name="questionG">Cường có rất nhiều bạn gái</string>
+    <string name="questionH">Dương đã có bạn gái</string>
+</resources>
